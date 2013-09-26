@@ -42,11 +42,11 @@ sub dbh {
 
 
 post '/input' => sub {
-    my ( $self, $c ) = @_;
-    my $uid = $c->req->parameters_raw->{uid};
-    my $dbh = $self->dbh([$self]);
+	my ( $self, $c ) = @_;
+	my $uid = $c->req->parameters_raw->{uid};
+	my $dbh = $self->dbh([$self]);
 	my $sth = $dbh->prepare("insert into test (uid) values ('$uid')");
-    $sth->execute;
+	$sth->execute;
 	$sth->finish;
 	$dbh->disconnect;
 };
